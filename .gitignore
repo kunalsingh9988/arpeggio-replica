@@ -1,0 +1,12 @@
+# dev artifacts (reference captures, downloaded source, scratch helpers)
+_raw/
+.taste-skill/
+_*
+
+# build output — Vercel rebuilds via `node build.mjs`
+dist/
+
+# os / tooling
+.DS_Store
+node_modules/
+.vercel
