@@ -16,7 +16,7 @@ const body = /* html */`
     <p class="lead" data-rv>Questions, ideas, or just saying hi</p>
     <div class="c-grid">
       <div class="c-left">
-        <h2 data-rv>Let's work together</h2>
+        <h2 data-rv>Let's illuminate your designs</h2>
         <ul class="c-checks">
           ${CONTACT_CHECKLIST.map(c => `<li data-rv>${dot()} ${c}</li>`).join('')}
         </ul>
@@ -31,7 +31,7 @@ const body = /* html */`
         </form>
       </div>
       <div class="c-right" data-rv>
-        <p class="muted">Whether you have a specific project in mind or just want to explore possibilities, we're here to help turn your vision into reality.</p>
+        <p class="muted">Whether you have a project in mind, a role to fill, or just want to explore possibilities — tell me about it and I'll reply within 24 hours.</p>
       </div>
     </div>
   </div>
@@ -58,15 +58,15 @@ const body = /* html */`
 
 <section class="testi-sec">
   <div class="wrap">
-    <h2 class="xl" data-rv-words>Inspiring client experiences</h2>
-    <p class="ach-sub" data-rv>Join us and become our next success story</p>
+    <h2 class="xl" data-rv-words>What collaborators say</h2>
+    <p class="ach-sub" data-rv>Join them and become the next success story</p>
     ${testimonials()}
   </div>
 </section>
 `;
 
 export default {
-  title: 'Contact — Arpeggio',
-  description: 'Tell us about your project. Share the brief and the Arpeggio team will get back to you within 48 hours.',
+  title: 'Contact — Kunal Singh',
+  description: 'Tell Kunal about your project, role or idea — replies within 24 hours.',
   body,
 };

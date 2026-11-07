@@ -15,7 +15,7 @@ const body = /* html */`
 `;
 
 export default {
-  title: '404 — Arpeggio',
+  title: '404 — Kunal Singh',
   description: 'Page not found.',
   body,
   cta: false,

@@ -1,6 +1,6 @@
 // ── Work detail page factory ─────────────────────────────────────────────
 import { IM, IMG, PROJECTS } from '../data.mjs';
-import { img, workCard, plus } from '../comps.mjs';
+import { img, pimg, workCard, plus } from '../comps.mjs';
 
 export function workDetail(p) {
   const others = PROJECTS.filter(x => x.slug !== p.slug).slice(0, 4);
@@ -28,7 +28,7 @@ export function workDetail(p) {
       </div>
       <div class="cs-blurb-row">
         <p class="lead" data-rv>${p.blurb}</p>
-        <a class="u-link" href="#" onclick="return false" data-rv><span>Visit Live Site</span></a>
+        <a class="u-link" href="${p.link}" target="_blank" rel="noopener" data-rv><span>View Project</span></a>
       </div>
       <div class="cs-meta" data-rv>
         <div><p class="micro-label">Client</p><b>${p.client}</b></div>
@@ -45,7 +45,7 @@ export function workDetail(p) {
       <div class="cs-sec-head"><h3 data-rv>${p.name}</h3><h4 data-rv>Overview</h4></div>
       <p class="lead" data-rv>${p.overview[0]}</p>
       <p class="muted" data-rv>${p.overview[1]}</p>
-      <div class="cs-imgs two">${p.overviewImgs.map(([f, a]) => `<div data-rv>${img(f, a)}</div>`).join('')}</div>
+      <div class="cs-imgs two">${p.overviewImgs.map(t => `<div data-rv>${pimg(t)}</div>`).join('')}</div>
     </div>
   </section>
 
@@ -53,7 +53,7 @@ export function workDetail(p) {
     <div class="wrap">
       <div class="cs-sec-head"><h3 data-rv>${p.name}</h3><h4 data-rv>The Challenge</h4></div>
       <p class="muted" data-rv>${p.challenge}</p>
-      <div class="cs-imgs three">${p.challengeImgs.map(([f, a]) => `<div data-rv>${img(f, a)}</div>`).join('')}</div>
+      <div class="cs-imgs three">${p.challengeImgs.map(t => `<div data-rv>${pimg(t)}</div>`).join('')}</div>
       <p class="muted" data-rv>${p.challengeAfter}</p>
     </div>
   </section>
@@ -62,7 +62,7 @@ export function workDetail(p) {
     <div class="wrap">
       <div class="cs-sec-head"><h3 data-rv>${p.name}</h3><h4 data-rv>The Solution</h4></div>
       <p class="muted" data-rv>${p.solution}</p>
-      <div class="cs-imgs three">${p.solutionImgs.map(([f, a]) => `<div data-rv>${img(f, a)}</div>`).join('')}</div>
+      <div class="cs-imgs three">${p.solutionImgs.map(t => `<div data-rv>${pimg(t)}</div>`).join('')}</div>
       <p class="micro-label" data-rv>${p.tech.join(' ')}</p>
       <p class="muted" data-rv>${p.solutionAfter}</p>
     </div>
@@ -75,7 +75,7 @@ export function workDetail(p) {
       <div class="cs-results">
         <div class="cs-res-img" data-rv>${p.video
           ? `<video autoplay muted loop playsinline><source src="${IM(p.video)}" type="video/mp4"></video>`
-          : img(p.resultsImg[0], p.resultsImg[1])}</div>
+          : pimg(p.resultsImg)}</div>
         <div class="cs-stats">
           ${p.stats.map(([l, d, v]) => `
             <div class="cs-stat" data-rv>

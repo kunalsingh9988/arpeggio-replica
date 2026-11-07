@@ -21,11 +21,11 @@
   addEventListener('keydown', e => { if (e.key === 'Escape' && !menu.hidden) close(); });
   $$('.menu a').forEach(a => a.addEventListener('click', close));
 
-  /* ── Clock (Europe/Rome, GMT+1) ───────────────────────────────────── */
+  /* ── Clock (Asia/Kolkata, IST) ────────────────────────────────────── */
   const clocks = $$('[data-clock]');
   if (clocks.length) {
     const fmt = new Intl.DateTimeFormat('en-GB', {
-      timeZone: 'Europe/Rome', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false,
+      timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false,
     });
     const tick = () => { const t = fmt.format(new Date()); clocks.forEach(c => c.textContent = t); };
     tick(); setInterval(tick, 1000);
@@ -191,25 +191,27 @@
     });
   });
 
-  /* ── Plan toggle (Core / Pro) ─────────────────────────────────────── */
+  /* ── Plan toggle (Freelance / Full-time) ──────────────────────────── */
   const toggle = $('.plan-toggle');
   if (toggle) {
-    const PLANS = {
-      'Core Plan': { price: '$5,499', img: 'PIxpbFpiHq656ZNK0IU4R8BLA.jpg', badge: 'ZPy0TdYRL1qLmBkkPn8LzAbPuc.svg', note: '* Minimal booking period — 2 months' },
-      'Pro Plan': { price: '$9,499', img: 'AvA1cgyFsNBzB5fQS5lTHrLbWrc.jpg', badge: 'GUKyzoGtbPZZB136CVTm1l7vooE.svg', note: '* Minimal booking period — 2 months' },
-    };
-    const media = $('.plan-media img:first-child');
-    const badge = $('.plan-badge');
-    const val = $('.plan-val');
-    const note = $('.plan-note');
+    const plansEl = $('[data-plans]');
+    const PLANS = plansEl ? JSON.parse(plansEl.textContent) : {};
+    const media = $('[data-plan-img]');
+    const badge = $('[data-plan-badge]');
+    const val = $('[data-plan-price]');
+    const note = $('[data-plan-note]');
+    const feats = $('[data-plan-feats]');
+    const tickSrc = $('.plan-feats img')?.src;
     $$('button', toggle).forEach(b => b.addEventListener('click', () => {
       $$('button', toggle).forEach(x => x.classList.toggle('on', x === b));
       const p = PLANS[b.textContent.trim()];
       if (!p) return;
-      media.src = media.src.replace(/[^/]+$/, p.img);
-      badge.src = badge.src.replace(/[^/]+$/, p.badge);
-      val.innerHTML = `${p.price}<span class="plan-per">/month</span>`;
-      note.textContent = p.note;
+      if (media) media.src = media.src.replace(/[^/]+$/, p.img);
+      if (badge) badge.src = badge.src.replace(/[^/]+$/, p.badge);
+      if (val) val.innerHTML = `${p.price}<span class="plan-per">${p.per}</span>`;
+      if (note) note.textContent = p.note;
+      if (feats) feats.innerHTML = p.feats.map(([t, d]) =>
+        `<li><img src="${tickSrc}" alt="" aria-hidden="true"><div><b>${t}</b><p class="muted">${d}</p></div></li>`).join('');
     }));
   }
 

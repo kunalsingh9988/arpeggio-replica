@@ -1,18 +1,20 @@
-// ── Home page ────────────────────────────────────────────────────────────
-import { IM, IMG, MOSAIC, PROJECTS, SERVICES, SNAPSHOT, AWARD_LOGOS, FAQS, PRICING_FEATURES, ARTICLES } from '../data.mjs';
-import { img, plus, dot, secLabel, serifCoda, accordion, workRow, journalCard, testimonials } from '../comps.mjs';
+// ── Home page — Kunal Singh, UX Designer ─────────────────────────────────
+import { IM, IMG, MOSAIC, PROJECTS, SERVICES, SNAPSHOT, BRAND_WORDS, FAQS, PLANS, ARTICLES } from '../data.mjs';
+import { img, plus, dot, secLabel, serifCoda, accordion, workRow, journalCard, testimonials, textMarquee, wordmark } from '../comps.mjs';
+
+const plan = PLANS['Freelance Project'];
 
 const body = /* html */`
 <!-- ═══ HERO ═══ -->
 <section class="hero">
-  <div class="hero-media">${img(IMG.heroInk, 'Girl in white smoke')}</div>
+  <div class="hero-media">${img(IMG.heroInk, 'Blue ink diffusing in water')}</div>
   <div class="hero-pluses">${plus()}${plus()}${plus()}${plus()}${plus()}${plus()}${plus()}${plus()}${plus()}${plus()}${plus()}${plus()}</div>
   <div class="hero-left" data-rv>
-    <h1>One subscription, unlimited design iterations.</h1>
-    <p class="hero-sub">${dot()} Freedom beyond the traditional project scope</p>
+    <h1>I am a UX Designer illuminating your designs.</h1>
+    <p class="hero-sub">${dot()} Driven by visual storytelling &amp; user-centered design</p>
   </div>
-  <p class="hero-serif" data-rv><em>The Creative<br>Agency—</em></p>
-  <div class="hero-mark" data-hero-mark><img src="${IM(IMG.logo)}" alt="Arpeggio"><img class="hero-reg" src="${IM(IMG.circle)}" alt="®"></div>
+  <p class="hero-serif" data-rv><em>The UX<br>Designer—</em></p>
+  <div class="hero-mark" data-hero-mark><span class="hero-mark-text">Kunal</span><img class="hero-reg" src="${IM(IMG.circle)}" alt="®"></div>
 </section>
 
 <!-- ═══ PINNED SCENE: video → mosaic ═══ -->
@@ -24,7 +26,7 @@ const body = /* html */`
     <div class="scene-mosaic" data-scene-mosaic>
       ${MOSAIC.map((m, i) => `<div class="mosaic-item" style="--mi:${i}">${img(m, 'Selected work')}</div>`).join('')}
     </div>
-    <h2 class="scene-title">Design that<br>captivates today<br>&amp; inspires<br>tomorrow.</h2>
+    <h2 class="scene-title">Design that<br>solves real problems<br>&amp; delights<br>real users.</h2>
   </div>
 </section>
 
@@ -33,47 +35,45 @@ const body = /* html */`
   ${PROJECTS.slice(0, 3).map(workRow).join('')}
 </section>
 
-<!-- ═══ ACHIEVEMENTS ═══ -->
+<!-- ═══ EXPERIENCE & IMPACT ═══ -->
 <section class="ach dark">
   <div class="wrap">
-    ${secLabel('Our Achievements', 'metrics & milestones', true)}
+    ${secLabel('Experience &amp; Impact', 'the story so far', true)}
     <div class="ach-head">
-      <h2 class="xl" data-rv-words>Behind every statistic pulses a human story</h2>
-      <p class="ach-sub" data-rv>Transforming industries, pixel by perfect pixel</p>
+      <h2 class="xl" data-rv-words>Behind every screen pulses a human story</h2>
+      <p class="ach-sub" data-rv>Translating research into products people love</p>
     </div>
     <div class="ach-split">
-      <a class="reel" href="https://www.youtube.com" target="_blank" rel="noopener" data-rv>
-        ${img(IMG.watchReel, 'Woman using a VR headset in a kitchen')}
-        <span class="reel-pill">${dot()} watch reel</span>
+      <a class="reel" href="work/adagiovr.html" data-rv>
+        ${img(IMG.adagioShot, 'AdagioVR — live product I designed')}
+        <span class="reel-pill">${dot()} see my work</span>
       </a>
       <div class="ach-right">
         <div class="award">
-          <p class="micro-label" data-rv>BEST INTEGRATED CAMPAIGN 2024</p>
-          <h3 data-rv>Boreal VR Campaign</h3>
-          <p class="muted" data-rv>Arpeggio is thrilled to announce our triumph at the Canned Lynx, winning the award for our dynamic campaign with the renowned VR brand, Boreal.</p>
-          <a class="u-link light" href="work/boreal-vr-headset.html" data-rv><span>view project</span></a>
+          <p class="micro-label" data-rv>FEATURED — SHIPPED &amp; LIVE</p>
+          <h3 data-rv>AdagioVR</h3>
+          <p class="muted" data-rv>A shipped product — a VR mental-wellbeing platform I designed end-to-end, live in production at adagiovr.com.</p>
+          <a class="u-link light" href="work/adagiovr.html" data-rv><span>view project</span></a>
         </div>
         <div class="ach-nums">
-          <div class="ach-num" data-rv><p class="micro-label">Customer Engagement</p><p class="ach-num-v"><span data-count="35">0</span>%</p></div>
-          <div class="ach-num" data-rv><p class="micro-label">REVENUE GROWTH</p><p class="ach-num-v"><span data-count="24">0</span>%</p></div>
+          <div class="ach-num" data-rv><p class="micro-label">Projects Shipped</p><p class="ach-num-v"><span data-count="6">0</span>+</p></div>
+          <div class="ach-num" data-rv><p class="micro-label">USER FLOWS MAPPED</p><p class="ach-num-v"><span data-count="48">0</span>+</p></div>
         </div>
       </div>
     </div>
-    <p class="micro-label center" data-rv style="margin-top:64px">Performance Snapshot</p>
+    <p class="micro-label center" data-rv style="margin-top:64px">Snapshot</p>
     <div class="snapshot">
       ${SNAPSHOT.map(([l, v]) => `<div class="snap" data-rv><p class="snap-l">${l}</p><p class="snap-v"><span data-count="${parseInt(v)}">0</span>${v.includes('+') ? '+' : ''}</p></div>`).join('')}
     </div>
-    <div class="marquee awards" data-marquee>
-      <div class="marquee-track">${[...AWARD_LOGOS, ...AWARD_LOGOS, ...AWARD_LOGOS].map(l => `<img src="${IM(l)}" alt="award logo" loading="lazy">`).join('')}</div>
-    </div>
+    ${textMarquee(BRAND_WORDS, 'awards')}
   </div>
 </section>
 
-<!-- ═══ SERVICES ═══ -->
+<!-- ═══ SKILLS ═══ -->
 <section class="services">
   <div class="wrap">
-    <h2 class="giant" data-rv>What we do</h2>
-    <p class="services-intro" data-rv>Perfectly aligned creative and production expertise to increase digital impact.</p>
+    <h2 class="giant" data-rv>What I do</h2>
+    <p class="services-intro" data-rv>Research, craft and systems thinking — one designer owning the full journey.</p>
     <div class="svc-list">
       ${SERVICES.map(([n, t, d, tags]) => `
         <div class="svc-row" data-rv>
@@ -83,158 +83,159 @@ const body = /* html */`
           <ul class="svc-tags">${tags.map(t => `<li>${t}</li>`).join('')}</ul>
         </div>`).join('')}
     </div>
-    ${serifCoda('Ready to create?', [['view our work', 'work.html'], ['explore plans', '#pricing']])}
+    ${serifCoda('Ready to create?', [['view my work', 'work.html'], ['work with me', 'contact.html']])}
   </div>
 </section>
 
-<!-- ═══ BENEFITS BENTO ═══ -->
+<!-- ═══ WHY ME BENTO ═══ -->
 <section class="bento-sec">
   <div class="wrap">
-    ${secLabel('Why Choose Us', 'benefits')}
+    ${secLabel('Why Work With Me', 'the difference')}
     <div class="ach-head">
-      <h2 class="xl" data-rv-words>Partnership, Not Just Projects</h2>
-      <p class="ach-sub" data-rv>Skip the hiring maze - get an entire creative powerhouse at your fingertips</p>
+      <h2 class="xl" data-rv-words>A design partner, not just a pair of hands</h2>
+      <p class="ach-sub" data-rv>Skip the agency maze — get a designer who owns the outcome</p>
     </div>
     <div class="bento">
       <div class="b-card b-premium" data-rv>
-        <h4>${dot()} Premium Plans</h4>
-        <p>Monthly comprehensive package for unlimited creative opportunities</p>
-        <div class="b-media">${img(IMG.handCard, 'Female hand shows a card')}</div>
+        <h4>${dot()} End-to-End UX</h4>
+        <p>From the first research question to the last handoff note — I own the whole journey</p>
+        <div class="b-media">${img(IMG.handCard, 'Hand showing a card')}</div>
       </div>
       <div class="b-card b-vision" data-rv>
-        <p class="b-pill">YOUR VISION — OUR CREATIVITY</p>
+        <p class="b-pill">YOUR USERS — MY OBSESSION</p>
         <div class="b-icons"><span class="b-ico heart"></span><span class="b-plus">+</span><span class="b-ico brick"></span></div>
-        <p>Great ideas born on your terms</p>
+        <p>Great products are born when empathy meets craft</p>
       </div>
-      <div class="b-card b-photo" data-rv>${img(IMG.legsLedge, 'Legs on a ledge')}</div>
+      <div class="b-card b-photo" data-rv>${img(IMG.kunalSelfie, 'Kunal Singh')}</div>
       <div class="b-card b-dash" data-rv>
-        <div class="b-dash-top"><h4>Design Dashboard</h4><p>Monitor progress and manage requests effortlessly</p></div>
+        <div class="b-dash-top"><h4>My Process</h4><p>Structured, transparent, and always moving forward</p></div>
         <div class="b-app" data-ui>
-          <div class="b-app-row"><span class="b-app-ico"></span><div><b>Applications</b><b>Kickoff</b><span>From ideas to action in 48 hours</span></div></div>
-          <div class="b-app-row"><span class="b-app-ico"></span><div><b>Applications</b><b>Design &amp; Development</b><span>Bringing your vision to life with precision</span></div></div>
-          <div class="b-app-row"><span class="b-app-ico"></span><div><b>Applications</b><b>Review &amp; Delivery</b><span>Perfecting every detail before launch</span></div></div>
+          <div class="b-app-row"><span class="b-app-ico"></span><div><b>Week 1</b><b>Research &amp; Discovery</b><span>Understanding the problem before touching pixels</span></div></div>
+          <div class="b-app-row"><span class="b-app-ico"></span><div><b>Week 2–3</b><b>Design &amp; Prototype</b><span>Flows to hi-fi screens, tested with real people</span></div></div>
+          <div class="b-app-row"><span class="b-app-ico"></span><div><b>Final</b><b>Refine &amp; Handoff</b><span>Polished, dev-ready files with documentation</span></div></div>
         </div>
-        <p class="b-real">${dot()} Real-time progress tracking</p>
+        <p class="b-real">${dot()} Regular async updates, always</p>
       </div>
       <div class="b-card b-stats" data-rv>
         <div class="b-half">
-          <p><span class="b-ico-t users"></span> <b>New Partnership</b></p>
-          <p class="b-big"><span data-count="33">0</span>+</p>
-          <p class="muted">Joined our creative network</p>
+          <p><span class="b-ico-t users"></span> <b>Projects Shipped</b></p>
+          <p class="b-big"><span data-count="6">0</span>+</p>
+          <p class="muted">Real products &amp; case studies</p>
         </div>
         <div class="b-half">
-          <p><span class="b-ico-t grow"></span> <b>Client Growth</b></p>
-          <p class="b-big"><span data-count="128">0</span>%</p>
-          <p class="muted">Compared to the previous year</p>
+          <p><span class="b-ico-t grow"></span> <b>On-Time Delivery</b></p>
+          <p class="b-big"><span data-count="100">0</span>%</p>
+          <p class="muted">Every milestone, every time</p>
         </div>
       </div>
       <div class="b-card b-tools" data-rv>
-        <p><b>Tools &amp; Integration</b></p>
-        <p class="muted">The latest and most advanced technologies and tools</p>
-        <div class="b-tool-row"><span class="tool x"></span><span class="tool slack"></span><span class="tool notion"></span></div>
+        <p><b>Tools I Live In</b></p>
+        <p class="muted">The latest and most advanced technologies</p>
+        <div class="b-tool-row"><span class="tool">Fg</span><span class="tool">Fr</span><span class="tool">Ai</span><span class="tool">Ps</span></div>
       </div>
       <div class="b-card b-price" data-rv>
-        <p><b>Affordable Pricing</b></p>
-        <p class="muted">Enjoy clear and predictable costs with consistent monthly rates</p>
+        <p><b>Flexible Engagement</b></p>
+        <p class="muted">Freelance sprints, contract work, or a seat on your team — whatever fits</p>
       </div>
       <div class="b-card b-cat" data-rv>
-        ${img(IMG.catHoodie, 'Cute cat in hoodie')}
-        <div class="b-cat-txt"><p><b>Satisfaction Rate</b> <span class="b-big">98%</span></p><p>From project feedback</p></div>
+        ${img(IMG.kunalPhoto, 'Kunal Singh portrait')}
+        <div class="b-cat-txt"><p><b>Response Time</b> <span class="b-big">&lt;24h</span></p><p>Usually much faster</p></div>
       </div>
       <div class="b-card b-art" data-rv>
-        ${img(IMG.bwArt, 'Modern B&W art')}
-        <div class="b-art-txt"><p><b>Flexible &amp; Scalable</b></p><p>Easily adjust your service level as your business grows.</p></div>
+        ${img(IMG.bwArt, 'Modern abstract art')}
+        <div class="b-art-txt"><p><b>Remote &amp; Flexible</b></p><p>Working across time zones, async-first, always reachable.</p></div>
       </div>
       <div class="b-card b-assist" data-rv>
-        ${img(IMG.manGlasses, 'Portrait of a man with glasses and beard')}
+        ${img(IMG.manGlasses, 'Focused at work')}
         <div class="b-assist-txt">
-          <p><b>Dedicated Assistance</b></p>
+          <p><b>Direct Collaboration</b></p>
           <p class="stars">★★★</p>
-          <p><b>99.9% Uptime Guarantee</b></p>
-          <p>Round-the-clock expert support for uninterrupted service and reliability.</p>
+          <p><b>No account managers</b></p>
+          <p>You work directly with the person designing — faster feedback, better outcomes.</p>
         </div>
       </div>
     </div>
-    ${serifCoda('Flexible &amp; Dedicated', [['view our work', 'work.html'], ['explore plans', '#pricing']])}
+    ${serifCoda('Flexible &amp; dedicated', [['view my work', 'work.html'], ['get in touch', 'contact.html']])}
   </div>
 </section>
 
-<!-- ═══ PRICING ═══ -->
-<section class="pricing" id="pricing">
+<!-- ═══ WORK WITH ME ═══ -->
+<section class="pricing" id="work-with-me">
   <div class="wrap">
-    ${secLabel('Membership Plans', 'pricing')}
+    ${secLabel('Work With Me', 'engagement')}
     <div class="center-head">
-      <h2 class="xl" data-rv-words>Your passport to flexible design revisions</h2>
-      <p class="ach-sub" data-rv>Get unlimited creativity and all premium features with our monthly All-In-One plan.</p>
+      <h2 class="xl" data-rv-words>Two ways we can build together</h2>
+      <p class="ach-sub" data-rv>A focused freelance sprint, or a seat on your team.</p>
     </div>
-    <div class="plan-toggle" data-rv><button class="on">Core Plan</button><button>Pro Plan</button></div>
-    <p class="plan-sub" data-rv>Simple pricing, powerful features, no hidden fees</p>
+    <div class="plan-toggle" data-rv><button class="on">Freelance Project</button><button>Full-time Role</button></div>
+    <p class="plan-sub" data-rv>Simple, honest collaboration — no hidden complexity</p>
     <div class="plan">
-      <div class="plan-media" data-rv>${img(IMG.corePlan, 'Core plan image')}<img class="plan-badge" src="${IM(IMG.coreIcon)}" alt="Core plan"></div>
+      <div class="plan-media" data-rv><img src="${IM(plan.img)}" alt="Engagement" data-plan-img><img class="plan-badge" src="${IM(plan.badge)}" alt="" data-plan-badge></div>
       <div class="plan-right">
         <div class="plan-price" data-rv>
-          <p class="plan-val">$5,499<span class="plan-per">/month</span></p>
-          <p class="plan-note">* Minimal booking period — 2 months</p>
+          <p class="plan-val" data-plan-price>${plan.price}<span class="plan-per">${plan.per}</span></p>
+          <p class="plan-note" data-plan-note>${plan.note}</p>
         </div>
         <div class="coda-links" data-rv>
-          <a class="u-link" href="https://buy.polar.sh" target="_blank" rel="noopener"><span>select plan</span></a>
-          <a class="u-link" href="contact.html"><span>quick call</span></a>
+          <a class="u-link" href="mailto:kusing51@gmail.com"><span>get in touch</span></a>
+          <a class="u-link" href="assets/kunal-resume.pdf" target="_blank" rel="noopener"><span>my resume</span></a>
         </div>
-        <ul class="plan-feats">
-          ${PRICING_FEATURES.map(([t, d]) => `<li data-rv><img src="${IM(IMG.tick)}" alt="" aria-hidden="true"><div><b>${t}</b><p class="muted">${d}</p></div></li>`).join('')}
+        <ul class="plan-feats" data-plan-feats>
+          ${plan.feats.map(([t, d]) => `<li data-rv><img src="${IM(IMG.tick)}" alt="" aria-hidden="true"><div><b>${t}</b><p class="muted">${d}</p></div></li>`).join('')}
         </ul>
       </div>
     </div>
   </div>
+  <script type="application/json" data-plans>${JSON.stringify(PLANS)}</script>
 </section>
 
 <!-- ═══ FAQ ═══ -->
 <section class="faq-sec">
   <div class="wrap">
-    ${secLabel('Popular Queries', 'faq')}
+    ${secLabel('Common Questions', 'faq')}
     <div class="center-head">
-      <h2 class="xl" data-rv-words>Quick and clear answers to your key questions</h2>
-      <p class="ach-sub" data-rv>Get the clarity you need about our design process and services</p>
+      <h2 class="xl" data-rv-words>Quick and clear answers before you reach out</h2>
+      <p class="ach-sub" data-rv>Everything you might want to know about working with me</p>
     </div>
     <div class="faq-grid">
       ${accordion(FAQS)}
       <aside class="faq-side" data-rv>
-        <p><b>Still looking for answers or need a good chat?</b></p>
-        <p class="muted">Our team will guide you through our design process, project specifications and cost estimate.</p>
-        ${img(IMG.teamTable, 'Collaborative work session at a rustic wooden table')}
+        <p><b>Something else on your mind?</b></p>
+        <p class="muted">Ask me anything — process, availability, tools, or just what I'm designing lately.</p>
+        ${img(IMG.teamTable, 'Collaborative work session')}
       </aside>
     </div>
-    ${serifCoda('Anything left out?', [['book a call', 'contact.html'], ['contact us', 'contact.html']], true)}
+    ${serifCoda('Anything left out?', [['book a call', 'contact.html'], ['say hello', 'mailto:kusing51@gmail.com']], true)}
   </div>
 </section>
 
 <!-- ═══ TESTIMONIALS ═══ -->
 <section class="testi-sec">
   <div class="wrap">
-    ${secLabel('Client Stories', 'testimonials')}
-    <h2 class="xl" data-rv-words>Inspiring client experiences</h2>
-    <p class="ach-sub" data-rv>Join us and become our next success story</p>
+    ${secLabel('Kind Words', 'testimonials')}
+    <h2 class="xl" data-rv-words>What collaborators say</h2>
+    <p class="ach-sub" data-rv>Join them and become the next success story</p>
     ${testimonials()}
-    ${serifCoda('Be part of our journey', [['membership plans', '#pricing'], ['view projects', 'work.html']], true)}
+    ${serifCoda('Be part of the story', [['work with me', 'contact.html'], ['view projects', 'work.html']], true)}
   </div>
 </section>
 
 <!-- ═══ JOURNAL ═══ -->
 <section class="journal-sec">
   <div class="wrap">
-    ${secLabel('Insights &amp; Innovation', 'journal')}
-    <h2 class="xl" data-rv-words>Straight from the newsroom</h2>
-    <p class="ach-sub" data-rv>Handpicked collection of design insights and industry perspectives</p>
+    ${secLabel('Notes &amp; Process', 'journal')}
+    <h2 class="xl" data-rv-words>Straight from the notebook</h2>
+    <p class="ach-sub" data-rv>What I'm learning about design, users and craft</p>
     <div class="j-grid">
       ${[ARTICLES[0], ARTICLES[4], ARTICLES[3], ARTICLES[2]].map(journalCard).join('')}
     </div>
-    ${serifCoda('Join the Arpeggio Library', [['trending', 'journal/design-systems-the-bridge-between-creativity-and-consistency.html'], ['weekly top', 'journal/the-rise-of-subscription-based-design.html']], true)}
+    ${serifCoda('Read more of my thinking', [['design systems', 'journal/design-systems-the-bridge-between-creativity-and-consistency.html'], ['ai & design', 'journal/ai-driven-design-beyond-the-basics.html']], true)}
   </div>
 </section>
 `;
 
 export default {
-  title: 'Arpeggio Agency & Portfolio Template',
-  description: 'Arpeggio is a premium Framer template built to turn your portfolio into a client conversion tool. Designed for agencies and studios, it drives results through strategic layouts, clear storytelling, and slick design. Backed by lifetime support.',
+  title: 'Kunal Singh — UX Designer',
+  description: 'Kunal Singh is a UX designer crafting intuitive, impactful digital experiences — blending visual storytelling with user-centered design to solve real-world problems.',
   body,
 };
